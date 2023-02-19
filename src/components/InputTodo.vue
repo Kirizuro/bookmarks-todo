@@ -26,11 +26,18 @@ function createTodo() {
     />
   </div>
 
-  <v-list lines="one" class="list">
-    <v-list-item v-for="(item, index) in todos" :key="index" :title="item">
-    </v-list-item>
+  <v-list v-if="todos.length" lines="one" class="list">
+    <v-hover v-slot="{ isHovering, props }">
+      <v-list-item
+        v-for="(item, index) in todos"
+        :key="index"
+        :title="item"
+        v-bind="props"
+      >
+        <v-btn variant="text" v-show="isHovering"> teste {{ index }} </v-btn>
+      </v-list-item>
+    </v-hover>
   </v-list>
-  Duplicated Name There are already an todo with same predicted name
 
   <!-- modal -->
   <v-dialog v-model="modalVisible" persistent width="auto">
@@ -55,6 +62,7 @@ function createTodo() {
             {
               modalVisible = false;
               todos.push(inputText);
+              inputText = '';
             }
           "
         >
@@ -81,6 +89,8 @@ function createTodo() {
 }
 
 .list {
-  margin: 0 20px;
+  margin: 30px 20px;
+  background-color: #fff;
+  border-radius: 30px;
 }
 </style>
