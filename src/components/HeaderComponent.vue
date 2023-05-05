@@ -1,8 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRoute } from 'vue-router';
+
+const { name } = useRoute();
+</script>
 
 <template>
   <div class="container">
-    <span>Todo App</span>
+    <span style="text-decoration: none; text-decoration-line: none">
+      <router-link to="/">Todo App</router-link> - {{ name }}</span
+    >
   </div>
 </template>
 

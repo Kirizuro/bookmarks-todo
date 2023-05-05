@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import Header from '@components/HeaderComponent.vue';
-import InputTodo from '@components/InputTodo.vue';
 </script>
 
 <template>
   <Header />
 
-  <InputTodo />
+  <router-view></router-view>
 </template>
 
 <style scoped></style>
